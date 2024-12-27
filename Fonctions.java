@@ -25,6 +25,7 @@ public class Fonctions {
     }
 
     public void afficher() {
+        public void afficher() {
         if (utilisateurs.size() < 0) {
             System.out.println("accune utilisateur a afficher !");
 
@@ -36,41 +37,24 @@ public class Fonctions {
 public void supprimer(){
     System.out.println("entrer le nom");
     String nom = scanner.nextLine();
- if (utilisateurs.size() < 0) {
-     System.out.println("accune supprimer !");
- }else{
-    utilisateurs.removeIf(utilisateur -> utilisateur.getNom().equals(nom));
-
-}
+    for (Utilisateur utilisateur:utilisateurs){
+        if (utilisateur.getNom().equals(nom)){
+            utilisateurs.remove(utilisateur);
+        }else System.out.println("le nom introvable");
     }
 
-    public void search(){
-        String valueSearch;
-        ArrayList<Utilisateur> usersFound = new ArrayList<>();
-        System.out.print("Enter Email ou le nom   de l'utilisateur à rechercher : ");
-        valueSearch = scanner.nextLine();
+    }
 
-        for (Utilisateur utilisateur : utilisateurs){
-            if (utilisateur.getNom().contains(valueSearch)
-                    || utilisateur.getEmail().contains(valueSearch)
-                    || utilisateur.getRole().getRoleName().contains(valueSearch)){
-
-                usersFound.add(utilisateur);
-            }
-        }
-
-        if (usersFound.isEmpty()){
-            System.out.println("Aucun utilisateur trouve!");
-
-        }else {
-            for (Utilisateur utilisateur : usersFound){
+   public void search(){
+        System.out.println("enter le nom");
+        String nom=scanner.nextLine();
+        for (Utilisateur utilisateur:utilisateurs){
+            if (utilisateur.getNom().equals(nom)){
                 System.out.println(utilisateur);
             }
         }
 
-
     }
-
     public void modifierUtilisateur(){
         System.out.print("Enter nom de l'utilisateur à modifier : ");
         String nom = scanner.nextLine();
